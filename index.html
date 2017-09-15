@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Physics Clicked Falling Boxes</title>
+    <title>Amjs softbody rope demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <!-- <link href='//fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>-->
@@ -138,7 +138,7 @@
      console.log("Right button");
      });*/
 
-    /*window.addEventListener("mousedown", function (event) {
+    window.addEventListener("mousedown", function (event) {
         if (event.button == 0)
             console.log("Left button");
         else if (event.button == 1)
@@ -146,7 +146,7 @@
         else if (event.button == 2)
             console.log("Right button");
     });
-*/
+
     // - Main code -
     function timeoutLoop(fn, reps, delay) {
         if (reps > 0)
@@ -323,6 +323,13 @@
 
         container.appendChild(renderer.domElement);
 
+        /*stats = new Stats();
+         stats.domElement.style.position = 'absolute';
+         stats.domElement.style.top = '0px';
+         container.appendChild(stats.domElement);*/
+
+        //
+
         window.addEventListener('resize', onWindowResize, false);
 
     }
@@ -464,7 +471,15 @@
                 createRigidBody(object, shape, objectMass, pos, quat);
                 object.userData.physicsBody.setFriction(0.5);
                 ropeSoftBody.appendAnchor(1, object.userData.physicsBody, true, 1);
-             
+                //window.ropePos = boundingBox.max/*{x:0, y:0, z:0}*/;
+                //                setTimeout(function () {
+                //                ropePos = object.position.clone();
+                /*scene.updateMatrixWorld(true);
+                 var position = new THREE.Vector3();
+                 position.getPositionFromMatrix( object.matrixWorld );
+                 alert(position.x + ',' + position.y + ',' + position.z);*/
+
+
             }, onProgress, onError);
             // Object
             var objectMass = 2;
@@ -737,6 +752,54 @@
         physicsWorld.addRigidBody(body);
     }
 
+    function initInput() {
+        //        window.addEventListener( 'click', function(  ) {
+        //            if(!intersects){
+        //                armMovement = true;
+        //            }
+        //        });
+        //        /*window.addEventListener( 'keydown', function( event ) {
+        //
+        //            switch ( event.keyCode ) {
+        //                // Q
+        //                case 81:
+        //                    armMovement = true;
+        //                    break;
+        //
+        //                // A
+        //                    /*case 65:
+        //                     armMovement = - 1;
+        //                     break;*/
+        //            }
+        //
+        //        }, false );
+        /*window.addEventListener( 'keyup', function( event ) {
+
+         armMovement = 0;
+
+         }, false );*/
+        /* window.addEventListener( 'keydown', function( event ) {
+
+         switch ( event.keyCode ) {
+         // Q
+         case 67:
+         pylon2.rotation.x = 50;
+         break;
+
+         // A
+         default:
+         //armMovement = - 1;
+         pylon2.rotation.x = 0;
+         break;
+         }
+
+         }, false );*/
+        /* window.addEventListener( 'keyup', function( event ) {
+
+         cut = 0;
+
+         }, false );*/
+    }
     function onWindowResize() {
         window.viewportWidth = window.innerWidth;
         window.viewportHeight = window.innerHeight;
